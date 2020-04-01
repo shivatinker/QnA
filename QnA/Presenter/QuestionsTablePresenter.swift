@@ -17,7 +17,7 @@ struct CellData {
 class QuestionsTablePresenter {
 
 	private let dataProvider: ForumDataProvider
-	private var delegate: QuestionsTableViewDelegate?
+	private weak var delegate: QuestionsTableViewDelegate?
 
 	private var questionIds = [Int]()
 
