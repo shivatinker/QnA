@@ -48,7 +48,8 @@ class QuestionsTableView: UITableView, UITableViewDelegate, UITableViewDataSourc
         let data = cellsData[indexPath.row]
         let cell = dequeueReusableCell(withIdentifier: cell_id) as! QuestionTableViewCell
         cell.answeredView.isHidden = !data.isAnswered
-        cell.usernameLabel.text = data.questionText
+        cell.usernameLabel.text = data.questionAuthorName
+        cell.questionTextLabel.text = data.questionText
         return cell
     }
 

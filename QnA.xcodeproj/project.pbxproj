@@ -184,7 +184,6 @@
 				D1D203A624326B81009A9E7E /* Frameworks */,
 				D1D203A724326B81009A9E7E /* Resources */,
 				DA1B2F0D2435341A00A0F4DD /* ShellScript */,
-				DA1B2F112435392E00A0F4DD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -261,23 +260,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "TAGS=\"TODO:|FIXME:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"\n";
-		};
-		DA1B2F112435392E00A0F4DD /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "swimat -r -i 4 \"$PROJECT_DIR\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
