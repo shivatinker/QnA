@@ -9,40 +9,40 @@
 import Foundation
 
 class QuestionViewPresenter {
-	private weak var questionViewDelegate: QuestionViewDelegate?
-	private let dataProvider: ForumDataProvider
-	let questionId: Int
+    private weak var questionViewDelegate: QuestionViewDelegate?
+    private let dataProvider: ForumDataProvider
+    let questionId: Int
 
-	init(questionId: Int) {
-		self.questionId = questionId
-		self.dataProvider = DataProviderManager.getDefaultDataProvider()
-	}
+    init(questionId: Int) {
+        self.questionId = questionId
+        self.dataProvider = DataProviderManager.getDefaultDataProvider()
+    }
 
-	public func setDelegate(_ delegate: QuestionViewDelegate) {
-		questionViewDelegate = delegate
-	}
+    public func setDelegate(_ delegate: QuestionViewDelegate) {
+        questionViewDelegate = delegate
+    }
 
-	public func refresh() {
-		dataProvider.getQuestionById(questionId) { mbQuestion in
-			guard let question = mbQuestion else {
-				self.questionViewDelegate?.displayError("Unable to load question #\(self.questionId)")
-				return
-			}
-			DispatchQueue.main.async {
-				self.questionViewDelegate?.setQuestionText(question.question)
-				self.questionViewDelegate?.setQuestionAuthorName(question.asking_Name)
-				self.questionViewDelegate?.setAnswerAuthorName(question.expert_Name)
-				if let answer = question.answer {
-					self.questionViewDelegate?.setAnswerText(answer)
-					self.questionViewDelegate?.setAnswered(true)
-				} else {
-					self.questionViewDelegate?.setAnswered(false)
-				}
-			}
-		}
-	}
+    public func refresh() {
+        dataProvider.getQuestionById(questionId) { mbQuestion in
+            guard let question = mbQuestion else {
+                self.questionViewDelegate?.displayError("Unable to load question #\(self.questionId)")
+                return
+            }
+            DispatchQueue.main.async {
+                self.questionViewDelegate?.setQuestionText(question.question)
+                self.questionViewDelegate?.setQuestionAuthorName(question.asking_Name)
+                self.questionViewDelegate?.setAnswerAuthorName(question.expert_Name)
+                if let answer = question.answer {
+                    self.questionViewDelegate?.setAnswerText(answer)
+                    self.questionViewDelegate?.setAnswered(true)
+                } else {
+                    self.questionViewDelegate?.setAnswered(false)
+                }
+            }
+        }
+    }
 
-	public func publishAnswer(text: String) {
+    public func publishAnswer(text: String) {
 
-	}
+    }
 }

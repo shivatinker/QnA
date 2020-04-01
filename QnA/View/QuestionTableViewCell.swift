@@ -11,12 +11,12 @@ import UIKit
 @IBDesignable
 class QuestionTableViewCell: UITableViewCell {
 
-	@IBOutlet weak var usernameLabel: UILabel!
-	@IBOutlet weak var questionTextLabel: UILabel!
-	@IBOutlet weak var answeredView: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var questionTextLabel: UILabel!
+    @IBOutlet weak var answeredView: UIImageView!
 
-	override func awakeFromNib() {
-		super.awakeFromNib()
-		// Initialization code
-	}
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
 }

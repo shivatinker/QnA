@@ -10,14 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
 
-	@IBOutlet weak var filterButton: UIBarButtonItem!
-	@IBOutlet weak var askButton: UIBarButtonItem!
-	@IBOutlet weak var tableView: QuestionsTableView!
+    @IBOutlet weak var filterButton: UIBarButtonItem!
+    @IBOutlet weak var askButton: UIBarButtonItem!
+    @IBOutlet weak var tableView: QuestionsTableView!
 
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
-	}
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 
 
 }

@@ -277,7 +277,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "swimat -r \"$PROJECT_DIR\"\n";
+			shellScript = "swimat -r -i 4 \"$PROJECT_DIR\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

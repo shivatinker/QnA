@@ -9,36 +9,36 @@
 import Foundation
 
 struct Question: Codable, CustomStringConvertible {
-	var description: String {
-		return """
+    var description: String {
+        return """
         
         Question #\(id): \(question)
         Answer: \(answer ?? "No answer")
         Asked by: #\(asked_by_id) \(asking_Name)
         Answered by: #\(expert_id) \(expert_Name)
         """
-	}
+    }
 
-	var id: Int
-	var question: String
+    var id: Int
+    var question: String
 
-	var answer: String?
-	var asked_by_id: Int
-	var asking_Name: String
-	var expert_id: Int
-	var expert_Name: String
+    var answer: String?
+    var asked_by_id: Int
+    var asking_Name: String
+    var expert_id: Int
+    var expert_Name: String
 
 
 }
 
 struct Expert: Codable, CustomStringConvertible {
-	var description: String {
-		return """
+    var description: String {
+        return """
         Expert #\(id) \(name)
         """
-	}
+    }
 
-	var id: Int
-	var name: String
+    var id: Int
+    var name: String
 }
 
