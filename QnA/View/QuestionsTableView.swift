@@ -8,11 +8,35 @@
 
 import UIKit
 
+protocol QuestionsTableDelegate: ErrorHandler {
+    func startLoading()
+    func stopLoading()
+}
+
 class QuestionsTableView: UITableView, UITableViewDelegate, UITableViewDataSource, QuestionsTableViewDelegate {
+    func startLoading() {
+        DispatchQueue.main.async {
+            self.superviewDelegate?.startLoading()
+        }
+    }
+
+    func stopLoading() {
+        DispatchQueue.main.async {
+            self.superviewDelegate?.stopLoading()
+        }
+    }
+
 
     private let cell_id = "abcd"
     private var cellsData = [CellData]()
     private var presenter: QuestionsTablePresenter!
+    private weak var superviewDelegate: QuestionsTableDelegate?
+
+
+
+    func setDelegate(delegate: QuestionsTableDelegate) {
+        superviewDelegate = delegate
+    }
 
     func setCellsData(_ data: [CellData]) {
         clear()
@@ -29,15 +53,16 @@ class QuestionsTableView: UITableView, UITableViewDelegate, UITableViewDataSourc
     func clear() {
         DispatchQueue.main.async {
             self.performBatchUpdates({
-                self.cellsData.removeAll()
                 let indices = Array(0..<self.cellsData.count).map({ IndexPath(row: $0, section: 0) })
                 self.deleteRows(at: indices, with: .automatic)
+                self.cellsData.removeAll()
             }, completion: nil)
         }
     }
 
+    //Error propagating to parent view
     func displayError(_ text: String) {
-        print(text)
+        superviewDelegate?.displayError(text)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -77,4 +102,8 @@ class QuestionsTableView: UITableView, UITableViewDelegate, UITableViewDataSourc
         MyNavigationController.instance().show(vc, sender: nil)
     }
 
+    func applyFilter(_ filter: QuestionsTablePresenter.FilterType) {
+        presenter.applyFilter(type: filter)
+        presenter.refresh()
+    }
 }

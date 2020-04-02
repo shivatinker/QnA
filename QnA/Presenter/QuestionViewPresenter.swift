@@ -9,7 +9,7 @@
 import Foundation
 
 class QuestionViewPresenter {
-    private weak var questionViewDelegate: QuestionViewDelegate?
+    private weak var delegate: QuestionViewDelegate?
     private let dataProvider: ForumDataProvider
     let questionId: Int
 
@@ -19,30 +19,40 @@ class QuestionViewPresenter {
     }
 
     public func setDelegate(_ delegate: QuestionViewDelegate) {
-        questionViewDelegate = delegate
+        self.delegate = delegate
     }
 
     public func refresh() {
+        delegate?.startLoading()
         dataProvider.getQuestionById(questionId) { mbQuestion in
             guard let question = mbQuestion else {
-                self.questionViewDelegate?.displayError("Unable to load question #\(self.questionId)")
+                DispatchQueue.main.async {
+                    self.delegate?.displayError("Unable to load question #\(self.questionId)")
+                    self.delegate?.stopLoading()
+                }
                 return
             }
             DispatchQueue.main.async {
-                self.questionViewDelegate?.setQuestionText(question.question)
-                self.questionViewDelegate?.setQuestionAuthorName(question.asking_Name)
-                self.questionViewDelegate?.setAnswerAuthorName(question.expert_Name)
+                self.delegate?.setQuestionText(question.question)
+                self.delegate?.setQuestionAuthorName(question.asking_Name)
+                self.delegate?.setAnswerAuthorName(question.expert_Name)
                 if let answer = question.answer {
-                    self.questionViewDelegate?.setAnswerText(answer)
-                    self.questionViewDelegate?.setAnswered(true)
+                    self.delegate?.setAnswerText(answer)
+                    self.delegate?.setAnswered(true)
                 } else {
-                    self.questionViewDelegate?.setAnswered(false)
+                    self.delegate?.setAnswered(false)
                 }
+                self.delegate?.stopLoading()
             }
         }
     }
 
     public func publishAnswer(text: String) {
-
+        delegate?.startLoading()
+        dataProvider.postAnswer(questionId: questionId, answer: text) { (success) in
+            DispatchQueue.main.async {
+                self.refresh()
+            }
+        }
     }
 }

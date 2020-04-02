@@ -23,6 +23,11 @@
 		D1D203F024335E2E009A9E7E /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D203EE24335E2E009A9E7E /* QuestionTableViewCell.swift */; };
 		D1D203F124335E2E009A9E7E /* QuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1D203EF24335E2E009A9E7E /* QuestionTableViewCell.xib */; };
 		D1D203F3243360FF009A9E7E /* QuestionsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D203F2243360FF009A9E7E /* QuestionsTableView.swift */; };
+		DA1B2F132435419200A0F4DD /* QuestionsBrowserViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1B2F122435419200A0F4DD /* QuestionsBrowserViewPresenter.swift */; };
+		DA1B2F1524355D8500A0F4DD /* AnswerBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1B2F1424355D8500A0F4DD /* AnswerBlockView.swift */; };
+		DA1B2F1724355D9700A0F4DD /* AnswerBlockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA1B2F1624355D9700A0F4DD /* AnswerBlockView.xib */; };
+		DAA5D94024357B39001C001C /* PostAnswerBlockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAA5D93F24357B39001C001C /* PostAnswerBlockView.xib */; };
+		DAA5D94224358348001C001C /* PostAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5D94124358347001C001C /* PostAnswerView.swift */; };
 		DAC465252434F927005B1259 /* QuestionViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC465242434F927005B1259 /* QuestionViewPresenter.swift */; };
 		DADB1730243505AA006CB1C7 /* DataProviderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADB172F243505AA006CB1C7 /* DataProviderManager.swift */; };
 		DADB173224350EA6006CB1C7 /* CommonProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADB173124350EA6006CB1C7 /* CommonProtocols.swift */; };
@@ -48,6 +53,11 @@
 		D1D203EE24335E2E009A9E7E /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
 		D1D203EF24335E2E009A9E7E /* QuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionTableViewCell.xib; sourceTree = "<group>"; };
 		D1D203F2243360FF009A9E7E /* QuestionsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsTableView.swift; sourceTree = "<group>"; };
+		DA1B2F122435419200A0F4DD /* QuestionsBrowserViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsBrowserViewPresenter.swift; sourceTree = "<group>"; };
+		DA1B2F1424355D8500A0F4DD /* AnswerBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerBlockView.swift; sourceTree = "<group>"; };
+		DA1B2F1624355D9700A0F4DD /* AnswerBlockView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnswerBlockView.xib; sourceTree = "<group>"; };
+		DAA5D93F24357B39001C001C /* PostAnswerBlockView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostAnswerBlockView.xib; sourceTree = "<group>"; };
+		DAA5D94124358347001C001C /* PostAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAnswerView.swift; sourceTree = "<group>"; };
 		DAC465242434F927005B1259 /* QuestionViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewPresenter.swift; sourceTree = "<group>"; };
 		DADB172F243505AA006CB1C7 /* DataProviderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderManager.swift; sourceTree = "<group>"; };
 		DADB173124350EA6006CB1C7 /* CommonProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonProtocols.swift; sourceTree = "<group>"; };
@@ -121,6 +131,7 @@
 				DAC465242434F927005B1259 /* QuestionViewPresenter.swift */,
 				DADB173124350EA6006CB1C7 /* CommonProtocols.swift */,
 				DADB17332435157F006CB1C7 /* QuestionsTablePresenter.swift */,
+				DA1B2F122435419200A0F4DD /* QuestionsBrowserViewPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -129,6 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				D1D203EF24335E2E009A9E7E /* QuestionTableViewCell.xib */,
+				DA1B2F1624355D9700A0F4DD /* AnswerBlockView.xib */,
+				DAA5D93F24357B39001C001C /* PostAnswerBlockView.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -169,6 +182,8 @@
 				D1D203EE24335E2E009A9E7E /* QuestionTableViewCell.swift */,
 				D10E77052433A0DF00BC2748 /* QuestionViewController.swift */,
 				D1D203F2243360FF009A9E7E /* QuestionsTableView.swift */,
+				DA1B2F1424355D8500A0F4DD /* AnswerBlockView.swift */,
+				DAA5D94124358347001C001C /* PostAnswerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -236,7 +251,9 @@
 				D1D203D824328957009A9E7E /* questions.json in Resources */,
 				D1D203DC24328AF8009A9E7E /* experts.json in Resources */,
 				D1D203F124335E2E009A9E7E /* QuestionTableViewCell.xib in Resources */,
+				DAA5D94024357B39001C001C /* PostAnswerBlockView.xib in Resources */,
 				D1D203B624326B84009A9E7E /* Assets.xcassets in Resources */,
+				DA1B2F1724355D9700A0F4DD /* AnswerBlockView.xib in Resources */,
 				D1D203B424326B81009A9E7E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,8 +288,10 @@
 				DADB173224350EA6006CB1C7 /* CommonProtocols.swift in Sources */,
 				D10E77082433A6C900BC2748 /* MyNavigationController.swift in Sources */,
 				D1D203B124326B81009A9E7E /* ViewController.swift in Sources */,
+				DA1B2F132435419200A0F4DD /* QuestionsBrowserViewPresenter.swift in Sources */,
 				D1D203F3243360FF009A9E7E /* QuestionsTableView.swift in Sources */,
 				D1D203D024326BD0009A9E7E /* ForumDataProvider.swift in Sources */,
+				DA1B2F1524355D8500A0F4DD /* AnswerBlockView.swift in Sources */,
 				D1D203AD24326B81009A9E7E /* AppDelegate.swift in Sources */,
 				D1D203D424326FF9009A9E7E /* ForumModel.swift in Sources */,
 				D10E77062433A0DF00BC2748 /* QuestionViewController.swift in Sources */,
@@ -282,6 +301,7 @@
 				DADB1730243505AA006CB1C7 /* DataProviderManager.swift in Sources */,
 				D1D203AF24326B81009A9E7E /* SceneDelegate.swift in Sources */,
 				D1D203F024335E2E009A9E7E /* QuestionTableViewCell.swift in Sources */,
+				DAA5D94224358348001C001C /* PostAnswerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

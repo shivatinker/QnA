@@ -10,6 +10,8 @@ import Foundation
 
 class MockForumDataProvider: ForumDataProvider {
 
+    let delayTime: TimeInterval = 0.5
+
     let userId = 42
     let userName = "Andrii Test"
 
@@ -22,8 +24,14 @@ class MockForumDataProvider: ForumDataProvider {
         experts = try decoder.decode([Expert].self, from: expertsJson)
     }
 
+    func getAllQuestions(callback: @escaping ([Question]?, Error?) -> Void) {
+        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + delayTime, execute: {
+            callback(self.questions, nil)
+        })
+    }
+
     func getAllQuestionsWithAnswer(callback: @escaping ([Question]?, Error?) -> Void) {
-        DispatchQueue.global(qos: .userInitiated).async {
+        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + delayTime) {
             guard let q = self.questions else {
                 callback(nil, DataProviderError("Unable to read JSON"))
                 return
@@ -32,26 +40,26 @@ class MockForumDataProvider: ForumDataProvider {
         }
     }
 
-    func getAllQuestionsWithoutAnswer(callback: @escaping ([Question]?) -> Void) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            callback(self.questions?.filter({ $0.answer == nil }))
+    func getAllQuestionsWithoutAnswer(callback: @escaping ([Question]?, Error?) -> Void) {
+        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + delayTime) {
+            callback(self.questions?.filter({ $0.answer == nil }), nil)
         }
     }
 
     func getQuestionById(_ id: Int, callback: @escaping (Question?) -> Void) {
-        DispatchQueue.global(qos: .userInitiated).async {
+        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + delayTime) {
             callback(self.questions?.first(where: { $0.id == id }))
         }
     }
 
     func postAnswer(questionId: Int, answer: String, callback: @escaping (Bool) -> Void) {
-        //FIXME: Fix
-        DispatchQueue.global(qos: .userInitiated).async {
+        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + delayTime) {
             guard let v = self.questions?.first(where: { $0.id == questionId }) else {
                 callback(false)
                 return
             }
-            //v.answer = answer
+            self.questions?.removeAll(where: { $0.id == questionId })
+            self.questions?.append(Question(id: v.id, question: v.question, answer: answer, asked_by_id: v.asked_by_id, asking_Name: v.asking_Name, expert_id: self.userId, expert_Name: self.userName))
             callback(true)
         }
     }
@@ -61,25 +69,25 @@ class MockForumDataProvider: ForumDataProvider {
     }
 
     func askQuestion(question: String, expertId: Int, callback: @escaping (Bool) -> Void) {
-        DispatchQueue.global(qos: .userInitiated).async {
+        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + delayTime) {
             guard let e = self.experts?.first(where: { $0.id == expertId }) else {
                 callback(false)
                 return
             }
             self.questions?.append(
                 Question(id: self.getNextQuestionId(),
-                    question: question,
-                    answer: nil,
-                    asked_by_id: self.userId,
-                    asking_Name: self.userName,
-                    expert_id: e.id,
-                    expert_Name: e.name))
+                         question: question,
+                         answer: nil,
+                         asked_by_id: self.userId,
+                         asking_Name: self.userName,
+                         expert_id: e.id,
+                         expert_Name: e.name))
             callback(true)
         }
     }
 
     func getAllExperts(callback: @escaping ([Expert]?) -> Void) {
-        DispatchQueue.global(qos: .userInitiated).async {
+        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + delayTime) {
             callback(self.experts)
         }
     }
