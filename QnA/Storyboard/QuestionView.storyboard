@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Question-->
+        <scene sceneID="l9H-OP-21o">
+            <objects>
+                <viewController storyboardIdentifier="QuestionViewController" id="76W-LW-EgB" customClass="QuestionViewController" customModule="QnA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nbl-2c-h1W">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="FPb-2e-auK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Kth-Jc-3oA">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="496"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbM-Pb-ugC" userLabel="questionLabel">
+                                                <rect key="frame" x="10" y="10" width="355" height="406"/>
+                                                <color key="backgroundColor" name="QuestionPanelBg"/>
+                                                <string key="text">Question text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                                <color key="textColor" name="QuestionText"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zGS-2b-lqk">
+                                                <rect key="frame" x="10" y="436" width="355" height="50"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLS-j8-voA">
+                                                        <rect key="frame" x="268.5" y="8" width="78.5" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Asked by:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xe9-VB-4U1">
+                                                        <rect key="frame" x="185.5" y="15" width="75" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" name="QuestionPanelBg"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="ZLS-j8-voA" secondAttribute="bottom" constant="8" id="1CT-Cz-LKj"/>
+                                                    <constraint firstItem="ZLS-j8-voA" firstAttribute="top" secondItem="zGS-2b-lqk" secondAttribute="top" constant="8" id="3ZP-Nm-7e1"/>
+                                                    <constraint firstItem="xe9-VB-4U1" firstAttribute="centerY" secondItem="ZLS-j8-voA" secondAttribute="centerY" id="A6d-wf-XEW"/>
+                                                    <constraint firstItem="ZLS-j8-voA" firstAttribute="leading" secondItem="xe9-VB-4U1" secondAttribute="trailing" constant="8" id="Jdu-PG-9QH"/>
+                                                    <constraint firstItem="xe9-VB-4U1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zGS-2b-lqk" secondAttribute="leading" constant="20" symbolic="YES" id="gQv-Xv-Ogd"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ZLS-j8-voA" secondAttribute="trailing" constant="8" id="lTe-0C-e7W"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <directionalEdgeInsets key="directionalLayoutMargins" top="10" leading="10" bottom="10" trailing="10"/>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Kth-Jc-3oA" firstAttribute="top" secondItem="FPb-2e-auK" secondAttribute="top" id="D5A-al-Tpv"/>
+                                    <constraint firstItem="Kth-Jc-3oA" firstAttribute="width" secondItem="FPb-2e-auK" secondAttribute="width" id="MBo-Ra-7dp"/>
+                                    <constraint firstAttribute="bottom" secondItem="Kth-Jc-3oA" secondAttribute="bottom" id="PHc-Hw-ICN"/>
+                                    <constraint firstItem="Kth-Jc-3oA" firstAttribute="leading" secondItem="FPb-2e-auK" secondAttribute="leading" id="cfM-92-alc"/>
+                                    <constraint firstAttribute="trailing" secondItem="Kth-Jc-3oA" secondAttribute="trailing" id="icg-0Y-RUd"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="Lsn-x1-FNL"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="MCC-TA-RKc"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="FPb-2e-auK" firstAttribute="leading" secondItem="9v5-Ep-Xra" secondAttribute="leading" id="Aze-T4-7zh"/>
+                            <constraint firstItem="9v5-Ep-Xra" firstAttribute="bottom" secondItem="FPb-2e-auK" secondAttribute="bottom" id="HXF-kh-dpA"/>
+                            <constraint firstItem="FPb-2e-auK" firstAttribute="width" secondItem="9v5-Ep-Xra" secondAttribute="width" id="NOI-4p-o3Q"/>
+                            <constraint firstItem="9v5-Ep-Xra" firstAttribute="trailing" secondItem="FPb-2e-auK" secondAttribute="trailing" id="P0P-H9-tOZ"/>
+                            <constraint firstItem="FPb-2e-auK" firstAttribute="top" secondItem="9v5-Ep-Xra" secondAttribute="top" id="XvF-Om-qgW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9v5-Ep-Xra"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Question" id="9U4-ZH-vgk"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="questionAuthorNameLabel" destination="ZLS-j8-voA" id="PlR-Gt-o6g"/>
+                        <outlet property="questionLabel" destination="NbM-Pb-ugC" id="Ziv-yW-UND"/>
+                        <outlet property="scrollView" destination="FPb-2e-auK" id="8oN-wq-LVw"/>
+                        <outlet property="stackView" destination="Kth-Jc-3oA" id="9VS-Y5-LCd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q4C-ZJ-dfS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="909.60000000000002" y="80.50974512743629"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="QuestionPanelBg">
+            <color red="0.0" green="0.28700000047683716" blue="1" alpha="0.57700002193450928" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="QuestionText">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

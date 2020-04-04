@@ -8,14 +8,14 @@
 
 import UIKit
 
-class PostAnswerView: UIView, UITextViewDelegate {
+protocol PostAnswerBlockViewDelegate: NSObjectProtocol {
+    func onPostAnswerClicked()
+}
+
+class PostAnswerBlockView: UIView, UITextViewDelegate {
 
     @IBOutlet weak var textView: UITextView!
-    private weak var delegate: PostAnswerBlockDelegate?
-
-    public func setDelegate(delegate: PostAnswerBlockDelegate){
-        self.delegate = delegate
-    }
+    public weak var delegate: PostAnswerBlockViewDelegate?
     
     override func willMove(toSuperview newSuperview: UIView?) {
         textView.delegate = self
@@ -26,6 +26,6 @@ class PostAnswerView: UIView, UITextViewDelegate {
     }
     
     @IBAction func onPostAnswerClicked(_ sender: Any) {
-        delegate?.postAnswer()
+        delegate?.onPostAnswerClicked()
     }
 }

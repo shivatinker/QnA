@@ -10,16 +10,20 @@ import UIKit
 
 class MyNavigationController: UINavigationController {
 
-    private static var nc: MyNavigationController?
-    public static func instance() -> MyNavigationController {
-        return nc!
+    private static var _instance: MyNavigationController?
+    public static var instance: MyNavigationController {
+        if let _instance = _instance {
+            return _instance
+        }
+        let newInstance = MyNavigationController()
+        _instance = newInstance
+        return newInstance
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
-        MyNavigationController.nc = self
+        MyNavigationController._instance = self
         // Do any additional setup after loading the view.
     }
 

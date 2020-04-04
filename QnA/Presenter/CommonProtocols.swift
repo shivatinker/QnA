@@ -9,24 +9,6 @@
 import Foundation
 
 protocol ErrorHandler: NSObjectProtocol {
-    func displayError(_ text: String)
-}
-
-protocol LoadingHandler: NSObjectProtocol {
-    func startLoading()
-    func stopLoading()
-}
-
-protocol QuestionViewDelegate: ErrorHandler, LoadingHandler {
-    func setQuestionText(_ text: String)
-    func setQuestionAuthorName(_ name: String)
-    func setAnswerText(_ text: String)
-    func setAnswerAuthorName(_ name: String)
-    func setAnswered(_ isAnswered: Bool)
-}
-
-protocol QuestionsTableViewDelegate: ErrorHandler, LoadingHandler {
-    func setCellsData(_ data: [CellData])
-    func clear()
-    func openQuestionView(questionId: Int) //TODO: Create router class to perform navigation and assembly
+    func displayError(_ error: Error?)
+    func displayError(text: String?)
 }

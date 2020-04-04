@@ -8,51 +8,63 @@
 
 import Foundation
 
-class QuestionViewPresenter {
-    private weak var delegate: QuestionViewDelegate?
-    private let dataProvider: ForumDataProvider
-    let questionId: Int
+protocol QuestionViewDelegate: NSObjectProtocol {
+    func setData(_ data: QuestionViewData)
+    func startLoading()
+    func stopLoading()
+}
 
+struct QuestionViewData {
+    var questionText: String
+    var questionAuthorName: String
+    var answerText: String?
+    var answerAuthorName: String?
+    var isAnswered: Bool
+}
+
+class QuestionViewPresenter {
+    // MARK: Private members
+    
+    private let dataProvider = DataProviderManager.getDefaultDataProvider()
+    private let questionId: Int
+    public var errorHandler: ErrorHandler?
+
+    // MARK: Public API
+    
+    public weak var delegate: QuestionViewDelegate?
+    
     init(questionId: Int) {
         self.questionId = questionId
-        self.dataProvider = DataProviderManager.getDefaultDataProvider()
     }
-
-    public func setDelegate(_ delegate: QuestionViewDelegate) {
-        self.delegate = delegate
-    }
-
+    
     public func refresh() {
-        delegate?.startLoading()
-        dataProvider.getQuestionById(questionId) { mbQuestion in
+        dataProvider.getQuestionById(questionId) { mbQuestion, mbError in
+            self.delegate?.startLoading()
+            defer { self.delegate?.stopLoading() }
+            
             guard let question = mbQuestion else {
-                DispatchQueue.main.async {
-                    self.delegate?.displayError("Unable to load question #\(self.questionId)")
-                    self.delegate?.stopLoading()
-                }
+                self.errorHandler?.displayError(mbError)
                 return
             }
-            DispatchQueue.main.async {
-                self.delegate?.setQuestionText(question.question)
-                self.delegate?.setQuestionAuthorName(question.asking_Name)
-                self.delegate?.setAnswerAuthorName(question.expert_Name)
-                if let answer = question.answer {
-                    self.delegate?.setAnswerText(answer)
-                    self.delegate?.setAnswered(true)
-                } else {
-                    self.delegate?.setAnswered(false)
-                }
-                self.delegate?.stopLoading()
+            
+            if mbError != nil {
+                self.errorHandler?.displayError(mbError)
             }
+
+            //Data binding
+            self.delegate?.setData(
+                QuestionViewData(questionText: question.question,
+                                 questionAuthorName: question.asking_Name,
+                                 answerText: question.answer,
+                                 answerAuthorName: question.expert_Name,
+                                 isAnswered: question.answer != nil))
         }
     }
 
-    public func publishAnswer(text: String) {
+    public func postAnswer(text: String) {
         delegate?.startLoading()
         dataProvider.postAnswer(questionId: questionId, answer: text) { (success) in
-            DispatchQueue.main.async {
-                self.refresh()
-            }
+            self.refresh()
         }
     }
 }
