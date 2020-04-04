@@ -13,12 +13,11 @@ class QuestionViewController: UIViewController {
     // MARK: Private members
 
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var questionAuthorNameLabel: UILabel!
     @IBOutlet weak var stackView: UIStackView!
 
     private var answerBlockView: AnswerBlockView!
     private var postAnswerBlockView: PostAnswerBlockView!
+    private var questionBlockView: QuestionBlockView!
     private let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(style: .medium)
 
     override func viewDidLoad() {
@@ -26,6 +25,7 @@ class QuestionViewController: UIViewController {
 
 
         presenter?.delegate = self
+        presenter?.parentPresenter = parentPresenter
         presenter?.errorHandler = AlertErrorHandler(parent: self)
 
         scrollView.alpha = 0.0
@@ -42,6 +42,9 @@ class QuestionViewController: UIViewController {
         answerBlockView = UINib(nibName: "AnswerBlockView", bundle: nil).instantiate(withOwner: self, options: nil).first as? AnswerBlockView
         postAnswerBlockView = UINib(nibName: "PostAnswerBlockView", bundle: nil).instantiate(withOwner: self, options: nil).first as? PostAnswerBlockView
         postAnswerBlockView.delegate = self
+        questionBlockView = UINib(nibName: "QuestionBlockView", bundle: nil).instantiate(withOwner: self, options: nil).first as? QuestionBlockView
+
+        stackView.addArrangedSubview(questionBlockView)
 
         presenter?.refresh()
     }
@@ -66,6 +69,7 @@ class QuestionViewController: UIViewController {
     // MARK: Public API
 
     public var presenter: QuestionViewPresenter?
+    public var parentPresenter: QuestionsListViewPresenter?
 
 }
 
@@ -73,8 +77,8 @@ extension QuestionViewController: QuestionViewDelegate {
     func setData(_ data: QuestionViewData) {
         DispatchQueue.main.async {
             // TODO: Do it more clearly, maybe rework block system
-            self.questionLabel.text = data.questionText
-            self.questionAuthorNameLabel.text = data.questionAuthorName
+            self.questionBlockView.questionLabel.text = data.questionText
+            self.questionBlockView.usernameLabel.text = data.questionAuthorName
             if data.isAnswered {
                 self.postAnswerBlockView.isHidden = true
                 self.stackView.removeArrangedSubview(self.postAnswerBlockView)
@@ -87,6 +91,8 @@ extension QuestionViewController: QuestionViewDelegate {
             } else {
                 self.answerBlockView.isHidden = true
                 self.stackView.removeArrangedSubview(self.answerBlockView)
+
+                self.postAnswerBlockView.setUsername(username: data.username)
 
                 self.postAnswerBlockView.isHidden = false
                 self.stackView.addArrangedSubview(self.postAnswerBlockView)

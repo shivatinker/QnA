@@ -20,6 +20,7 @@ struct QuestionViewData {
     var answerText: String?
     var answerAuthorName: String?
     var isAnswered: Bool
+    var username: String
 }
 
 class QuestionViewPresenter {
@@ -32,6 +33,7 @@ class QuestionViewPresenter {
     // MARK: Public API
     
     public weak var delegate: QuestionViewDelegate?
+    public weak var parentPresenter: QuestionsListViewPresenter?
     
     init(questionId: Int) {
         self.questionId = questionId
@@ -57,13 +59,15 @@ class QuestionViewPresenter {
                                  questionAuthorName: question.asking_Name,
                                  answerText: question.answer,
                                  answerAuthorName: question.expert_Name,
-                                 isAnswered: question.answer != nil))
+                                 isAnswered: question.answer != nil,
+                                 username: self.dataProvider.getUsername()))
         }
     }
 
     public func postAnswer(text: String) {
         delegate?.startLoading()
         dataProvider.postAnswer(questionId: questionId, answer: text) { (success) in
+            self.parentPresenter?.refresh(silent: true)
             self.refresh()
         }
     }

@@ -11,7 +11,7 @@ import Foundation
 
 
 protocol QuestionsListDelegate: NSObjectProtocol {
-    func setDisplayedQuestions(_ questions: [QuestionData])
+    func setDisplayedQuestions(_ questions: [QuestionData], silent: Bool)
     func clearTable()
     func openQuestionView(questionId: Int) //TODO: Create router class to perform navigation and assembly
     func startLoading()
@@ -44,10 +44,10 @@ class QuestionsListViewPresenter {
     public var filterType = FilterType.allQuestions
     public var errorHandler: ErrorHandler?
     public weak var delegate: QuestionsListDelegate?
-
-    public func refresh() {
+    
+    public func refresh(silent: Bool = false) {
         self.delegate?.startLoading()
-        self.delegate?.clearTable()
+        //self.delegate?.clearTable()
         let callback = { (mbQuestions: [Question]?, mbError: Error?) in
             defer { self.delegate?.stopLoading() }
             guard let questions = mbQuestions else {
@@ -58,7 +58,7 @@ class QuestionsListViewPresenter {
             // Data binding
             self.delegate?.setDisplayedQuestions(questions.map({ (q) -> QuestionData in
                 return QuestionData(questionText: q.question, questionAuthorName: q.asking_Name, isAnswered: q.answer != nil)
-            }))
+                }), silent: silent)
         }
         switch filterType {
         case .allQuestions: dataProvider.getAllQuestions(callback: callback)

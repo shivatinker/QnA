@@ -12,7 +12,9 @@ typealias DataGetCallback<T> = (T, DataProviderError?) -> Void
 typealias DataPostCallback = (DataProviderError?) -> Void
 
 protocol ForumDataProvider {
-
+    
+    // MARK: Info queries
+    func getUsername() -> String
     // MARK: Get queries
     func getAllQuestionsWithAnswer(callback: @escaping DataGetCallback<[Question]?>)
     func getAllQuestionsWithoutAnswer(callback: @escaping DataGetCallback<[Question]?>)

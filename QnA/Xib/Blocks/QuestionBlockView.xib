@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="4Hi-hY-Dq9" customClass="QuestionBlockView" customModule="QnA" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="399" height="461"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ylF-Sh-nyH" userLabel="ContainerView">
+                    <rect key="frame" x="0.0" y="0.0" width="399" height="461"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZYN-cu-rhz" userLabel="Header">
+                            <rect key="frame" x="0.0" y="0.0" width="399" height="40"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Question" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="spI-hd-Eid">
+                                    <rect key="frame" x="8" y="7" width="83" height="26"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" name="QuestionHeaderBg"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="xYF-TA-55p"/>
+                            </constraints>
+                            <viewLayoutGuide key="safeArea" id="4TU-B3-DkV"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GhK-jg-72e" userLabel="QuestionTextView">
+                            <rect key="frame" x="0.0" y="43" width="399" height="375"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFq-b1-Hok" userLabel="questionLabel">
+                                    <rect key="frame" x="8" y="8" width="383" height="359"/>
+                                    <string key="text">Question text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                    <color key="textColor" name="AnswerText"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" name="QuestionPanelBg"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="sFq-b1-Hok" secondAttribute="trailing" constant="8" id="3CP-Zc-fkL"/>
+                                <constraint firstItem="sFq-b1-Hok" firstAttribute="top" secondItem="GhK-jg-72e" secondAttribute="top" constant="8" id="L9O-Gq-zjO"/>
+                                <constraint firstItem="sFq-b1-Hok" firstAttribute="leading" secondItem="GhK-jg-72e" secondAttribute="leading" constant="8" id="Qof-QQ-8LU"/>
+                                <constraint firstAttribute="bottom" secondItem="sFq-b1-Hok" secondAttribute="bottom" constant="8" id="kel-ng-0yR"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hR9-PY-Anf" userLabel="AuthorView">
+                            <rect key="frame" x="0.0" y="421" width="399" height="40"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zem-Nc-vTd">
+                                    <rect key="frame" x="307" y="8" width="84" height="24"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Asked by:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55U-KD-K2S">
+                                    <rect key="frame" x="224" y="9.5" width="75" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" name="QuestionHeaderBg"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="EFT-yu-ueB"/>
+                                <constraint firstItem="55U-KD-K2S" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hR9-PY-Anf" secondAttribute="leading" constant="20" symbolic="YES" id="EPh-KX-lxx"/>
+                                <constraint firstItem="55U-KD-K2S" firstAttribute="centerY" secondItem="zem-Nc-vTd" secondAttribute="centerY" id="K34-3c-FLd"/>
+                                <constraint firstAttribute="trailing" secondItem="zem-Nc-vTd" secondAttribute="trailing" constant="8" id="Mya-dx-C6f"/>
+                                <constraint firstItem="zem-Nc-vTd" firstAttribute="leading" secondItem="55U-KD-K2S" secondAttribute="trailing" constant="8" id="V9q-ht-GTI"/>
+                                <constraint firstAttribute="bottom" secondItem="zem-Nc-vTd" secondAttribute="bottom" constant="8" id="hVO-BK-KUF"/>
+                                <constraint firstItem="zem-Nc-vTd" firstAttribute="top" secondItem="hR9-PY-Anf" secondAttribute="top" constant="8" id="uLZ-aC-4UK"/>
+                            </constraints>
+                            <viewLayoutGuide key="safeArea" id="ObN-yg-X3h"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="GhK-jg-72e" secondAttribute="trailing" id="23f-r7-Hjy"/>
+                        <constraint firstItem="ZYN-cu-rhz" firstAttribute="top" secondItem="ylF-Sh-nyH" secondAttribute="top" id="79g-XA-Mv9"/>
+                        <constraint firstItem="hR9-PY-Anf" firstAttribute="leading" secondItem="ylF-Sh-nyH" secondAttribute="leading" id="8zH-pJ-Xf2"/>
+                        <constraint firstAttribute="bottom" secondItem="hR9-PY-Anf" secondAttribute="bottom" id="BN5-fj-XEP"/>
+                        <constraint firstItem="GhK-jg-72e" firstAttribute="top" secondItem="ZYN-cu-rhz" secondAttribute="bottom" constant="3" id="CDz-zw-Sde"/>
+                        <constraint firstItem="GhK-jg-72e" firstAttribute="leading" secondItem="ylF-Sh-nyH" secondAttribute="leading" id="Ida-AX-Hz7"/>
+                        <constraint firstItem="hR9-PY-Anf" firstAttribute="top" secondItem="GhK-jg-72e" secondAttribute="bottom" constant="3" id="YOW-yg-tKg"/>
+                        <constraint firstItem="ZYN-cu-rhz" firstAttribute="trailing" secondItem="GhK-jg-72e" secondAttribute="trailing" id="sBf-Q7-QnD"/>
+                        <constraint firstAttribute="trailing" secondItem="hR9-PY-Anf" secondAttribute="trailing" id="z7e-0m-GqD"/>
+                        <constraint firstItem="ZYN-cu-rhz" firstAttribute="leading" secondItem="GhK-jg-72e" secondAttribute="leading" id="zEk-EI-4la"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="vgq-hG-I9K" firstAttribute="trailing" secondItem="ylF-Sh-nyH" secondAttribute="trailing" id="Ljf-55-NQq"/>
+                <constraint firstItem="vgq-hG-I9K" firstAttribute="bottom" secondItem="ylF-Sh-nyH" secondAttribute="bottom" id="do6-Td-iXa"/>
+                <constraint firstItem="ylF-Sh-nyH" firstAttribute="leading" secondItem="vgq-hG-I9K" secondAttribute="leading" id="n19-nU-Yoa"/>
+                <constraint firstItem="ylF-Sh-nyH" firstAttribute="top" secondItem="vgq-hG-I9K" secondAttribute="top" id="n5d-bl-KSg"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vgq-hG-I9K"/>
+            <connections>
+                <outlet property="questionLabel" destination="sFq-b1-Hok" id="eNG-4g-8nx"/>
+                <outlet property="usernameLabel" destination="zem-Nc-vTd" id="5Xs-rd-dKd"/>
+            </connections>
+            <point key="canvasLocation" x="196" y="57.121439280359823"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="AnswerText">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="QuestionHeaderBg">
+            <color red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="QuestionPanelBg">
+            <color red="0.0" green="0.65457401890732392" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

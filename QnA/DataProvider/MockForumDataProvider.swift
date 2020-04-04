@@ -9,11 +9,15 @@
 import Foundation
 
 class MockForumDataProvider: ForumDataProvider {
+    func getUsername() -> String {
+        return userName
+    }
+    
 
     let delayTime: TimeInterval = 0.3
 
     let userId = 42
-    let userName = "Andrii Test"
+    let userName = "Andrii"
 
     var questions: [Question]?
     var experts: [Expert]?

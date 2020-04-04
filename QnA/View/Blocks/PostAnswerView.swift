@@ -14,9 +14,16 @@ protocol PostAnswerBlockViewDelegate: NSObjectProtocol {
 
 class PostAnswerBlockView: UIView, UITextViewDelegate {
 
-    @IBOutlet weak var textView: UITextView!
-    public weak var delegate: PostAnswerBlockViewDelegate?
     
+    @IBOutlet weak var textView: KMPlaceholderTextView!
+    @IBOutlet weak var headerLabel: UILabel!
+    public weak var delegate: PostAnswerBlockViewDelegate?
+
+    public func setUsername(username: String) {
+        // TODO: Add bold username
+        headerLabel.text = "Post answer as \(username):"
+    }
+
     override func willMove(toSuperview newSuperview: UIView?) {
         textView.delegate = self
     }
@@ -24,7 +31,7 @@ class PostAnswerBlockView: UIView, UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         textView.sizeToFit()
     }
-    
+
     @IBAction func onPostAnswerClicked(_ sender: Any) {
         delegate?.onPostAnswerClicked()
     }

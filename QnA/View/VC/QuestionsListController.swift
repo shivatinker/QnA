@@ -16,6 +16,7 @@ class QuestionsListViewController: UIViewController {
     @IBOutlet weak var tableView: QuestionsTableView!
 
     private let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(style: .medium)
+    private let refreshControl = UIRefreshControl()
     public var presenter: QuestionsListViewPresenter?
 
     override func viewDidLoad() {
@@ -26,11 +27,17 @@ class QuestionsListViewController: UIViewController {
         presenter?.delegate = self
         presenter?.errorHandler = AlertErrorHandler(parent: self)
 
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+
         navigationItem.leftBarButtonItems?.append(UIBarButtonItem(customView: activityIndicator))
         tableView.superviewDelegate = self
-    }
 
-    override func viewWillAppear(_ animated: Bool) {
+        refresh()
+    }
+    
+    @objc
+    private func refresh(){
         presenter?.refresh()
     }
 
@@ -52,13 +59,13 @@ extension QuestionsListViewController: QuestionsTableDelegate {
 }
 
 extension QuestionsListViewController: QuestionsListDelegate {
-    func setDisplayedQuestions(_ questions: [QuestionData]) {
+    func setDisplayedQuestions(_ questions: [QuestionData], silent: Bool) {
         DispatchQueue.main.async {
             // Data binding
             self.tableView.setCells(questions.map({
                 QuestionsTableViewCellData(questionText: $0.questionText,
                                            questionAuthorName: $0.questionAuthorName,
-                                           isAnswered: $0.isAnswered) }))
+                                           isAnswered: $0.isAnswered) }), silent: silent)
         }
     }
 
@@ -77,6 +84,7 @@ extension QuestionsListViewController: QuestionsListDelegate {
     func stopLoading() {
         DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
+            self.refreshControl.endRefreshing()
         }
     }
 
@@ -84,6 +92,7 @@ extension QuestionsListViewController: QuestionsListDelegate {
         // TODO: Use router for this sh*t
         let vc = UIStoryboard(name: "QuestionView", bundle: nil).instantiateViewController(identifier: "QuestionViewController") as! QuestionViewController
         vc.presenter = QuestionViewPresenter(questionId: questionId)
+        vc.parentPresenter = presenter
         MyNavigationController.instance.show(vc, sender: nil)
     }
 }

@@ -28,6 +28,7 @@ class QuestionsTableView: UITableView {
     // MARK: Private
     private let cell_id = "abcd"
     private var cellsData = [QuestionsTableViewCellData]()
+    private var cellAlpha: CGFloat = 1.0
 
     override func willMove(toSuperview newSuperview: UIView?) {
         delegate = self
@@ -38,22 +39,22 @@ class QuestionsTableView: UITableView {
     // MARK: Public API
     public weak var superviewDelegate: QuestionsTableDelegate?
 
-    public func setCells(_ data: [QuestionsTableViewCellData]) {
+    public func setCells(_ data: [QuestionsTableViewCellData], silent: Bool) {
         clear()
-        self.performBatchUpdates({
-            self.cellsData = data
-            for i in 0..<data.count {
-                self.insertRows(at: [IndexPath(row: i, section: 0)], with: .fade)
+        self.cellsData = data
+        reloadData()
+        if !silent {
+            cellAlpha = 0.0
+            for cell in visibleCells as [UITableViewCell] {
+                cell.alpha = 0
+                UIView.animate(withDuration: 0.5, animations: { cell.alpha = 1 })
             }
-        }, completion: nil)
+        }
     }
 
     public func clear() {
-        self.performBatchUpdates({
-            let indices = Array(0..<self.cellsData.count).map({ IndexPath(row: $0, section: 0) })
-            self.deleteRows(at: indices, with: .fade)
-            self.cellsData.removeAll()
-        }, completion: nil)
+        self.cellsData.removeAll()
+        reloadData()
     }
 
 }
@@ -64,12 +65,20 @@ extension QuestionsTableView: UITableViewDataSource, UITableViewDelegate {
         return cellsData.count
     }
 
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.alpha = 0.0
+        UIView.animate(withDuration: 0.5, animations: {
+            cell.alpha = 1
+        })
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let data = cellsData[indexPath.row]
         let cell = dequeueReusableCell(withIdentifier: cell_id) as! QuestionTableViewCell
         cell.answeredView.isHidden = !data.isAnswered
         cell.usernameLabel.text = data.questionAuthorName
         cell.questionTextLabel.text = data.questionText
+
         return cell
     }
 
