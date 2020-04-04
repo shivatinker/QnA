@@ -35,9 +35,9 @@ class QuestionsListViewController: UIViewController {
 
         refresh()
     }
-    
+
     @objc
-    private func refresh(){
+    private func refresh() {
         presenter?.refresh()
     }
 
@@ -49,6 +49,9 @@ class QuestionsListViewController: UIViewController {
         }
     }
 
+    @IBAction func onAskClicked(_ sender: Any) {
+        presenter?.askClicked()
+    }
 
 }
 
@@ -59,6 +62,7 @@ extension QuestionsListViewController: QuestionsTableDelegate {
 }
 
 extension QuestionsListViewController: QuestionsListDelegate {
+
     func setDisplayedQuestions(_ questions: [QuestionData], silent: Bool) {
         DispatchQueue.main.async {
             // Data binding
@@ -92,7 +96,15 @@ extension QuestionsListViewController: QuestionsListDelegate {
         // TODO: Use router for this sh*t
         let vc = UIStoryboard(name: "QuestionView", bundle: nil).instantiateViewController(identifier: "QuestionViewController") as! QuestionViewController
         vc.presenter = QuestionViewPresenter(questionId: questionId)
-        vc.parentPresenter = presenter
+        vc.presenter!.parentPresenter = presenter
+        MyNavigationController.instance.show(vc, sender: nil)
+    }
+
+    func openAskView() {
+        // TODO: Use router for this sh*t
+        let vc = UIStoryboard(name: "AskView", bundle: nil).instantiateViewController(identifier: "AskViewController") as! AskViewController
+        vc.presenter = AskViewControllerPresenter()
+        vc.presenter!.parentPresenter = presenter
         MyNavigationController.instance.show(vc, sender: nil)
     }
 }

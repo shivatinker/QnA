@@ -25,7 +25,6 @@ class QuestionViewController: UIViewController {
 
 
         presenter?.delegate = self
-        presenter?.parentPresenter = parentPresenter
         presenter?.errorHandler = AlertErrorHandler(parent: self)
 
         scrollView.alpha = 0.0
@@ -69,7 +68,6 @@ class QuestionViewController: UIViewController {
     // MARK: Public API
 
     public var presenter: QuestionViewPresenter?
-    public var parentPresenter: QuestionsListViewPresenter?
 
 }
 

@@ -12,7 +12,7 @@ class MockForumDataProvider: ForumDataProvider {
     func getUsername() -> String {
         return userName
     }
-    
+
 
     let delayTime: TimeInterval = 0.3
 
@@ -65,7 +65,7 @@ class MockForumDataProvider: ForumDataProvider {
     }
 
     private func getNextQuestionId() -> Int {
-        return questions?.map({ $0.id }).max() ?? 0
+        return (questions?.map({ $0.id }).max() ?? -1) + 1
     }
 
     func askQuestion(question: String, expertId: Int, callback: @escaping DataPostCallback) {
@@ -74,8 +74,9 @@ class MockForumDataProvider: ForumDataProvider {
                 callback(DataProviderError(type: .noSuchExpert, description: String(expertId)))
                 return
             }
+            let id = self.getNextQuestionId()
             self.questions?.append(
-                Question(id: self.getNextQuestionId(),
+                Question(id: id,
                          question: question,
                          answer: nil,
                          asked_by_id: self.userId,

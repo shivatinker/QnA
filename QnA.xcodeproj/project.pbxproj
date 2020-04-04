@@ -34,6 +34,9 @@
 		DAC465252434F927005B1259 /* QuestionViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC465242434F927005B1259 /* QuestionViewPresenter.swift */; };
 		DADA38B824390D5D0049E30F /* QuestionBlockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DADA38B724390D5D0049E30F /* QuestionBlockView.xib */; };
 		DADA38BB24390F0A0049E30F /* QuestionBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA38BA24390F0A0049E30F /* QuestionBlockView.swift */; };
+		DADA38BD243923F30049E30F /* AskView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DADA38BC243923F30049E30F /* AskView.storyboard */; };
+		DADA38BF243927180049E30F /* AskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA38BE243927180049E30F /* AskViewController.swift */; };
+		DADA38C1243927320049E30F /* AskViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA38C0243927320049E30F /* AskViewControllerPresenter.swift */; };
 		DADB1730243505AA006CB1C7 /* DataProviderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADB172F243505AA006CB1C7 /* DataProviderManager.swift */; };
 		DADB173224350EA6006CB1C7 /* CommonProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADB173124350EA6006CB1C7 /* CommonProtocols.swift */; };
 		DADB17342435157F006CB1C7 /* QuestionsListViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADB17332435157F006CB1C7 /* QuestionsListViewPresenter.swift */; };
@@ -69,6 +72,9 @@
 		DAC465242434F927005B1259 /* QuestionViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewPresenter.swift; sourceTree = "<group>"; };
 		DADA38B724390D5D0049E30F /* QuestionBlockView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionBlockView.xib; sourceTree = "<group>"; };
 		DADA38BA24390F0A0049E30F /* QuestionBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionBlockView.swift; sourceTree = "<group>"; };
+		DADA38BC243923F30049E30F /* AskView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AskView.storyboard; sourceTree = "<group>"; };
+		DADA38BE243927180049E30F /* AskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskViewController.swift; sourceTree = "<group>"; };
+		DADA38C0243927320049E30F /* AskViewControllerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskViewControllerPresenter.swift; sourceTree = "<group>"; };
 		DADB172F243505AA006CB1C7 /* DataProviderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderManager.swift; sourceTree = "<group>"; };
 		DADB173124350EA6006CB1C7 /* CommonProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonProtocols.swift; sourceTree = "<group>"; };
 		DADB17332435157F006CB1C7 /* QuestionsListViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsListViewPresenter.swift; sourceTree = "<group>"; };
@@ -141,6 +147,7 @@
 				DAC465242434F927005B1259 /* QuestionViewPresenter.swift */,
 				DADB173124350EA6006CB1C7 /* CommonProtocols.swift */,
 				DADB17332435157F006CB1C7 /* QuestionsListViewPresenter.swift */,
+				DADA38C0243927320049E30F /* AskViewControllerPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -160,6 +167,7 @@
 				D1D203B224326B81009A9E7E /* Main.storyboard */,
 				D1D203B724326B84009A9E7E /* LaunchScreen.storyboard */,
 				DA4C131A243802E7008759B5 /* QuestionView.storyboard */,
+				DADA38BC243923F30049E30F /* AskView.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -182,6 +190,7 @@
 			children = (
 				D1D203B024326B81009A9E7E /* QuestionsListController.swift */,
 				D10E77052433A0DF00BC2748 /* QuestionViewController.swift */,
+				DADA38BE243927180049E30F /* AskViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -297,6 +306,7 @@
 				DA4C131B243802E7008759B5 /* QuestionView.storyboard in Resources */,
 				D1D203B924326B84009A9E7E /* LaunchScreen.storyboard in Resources */,
 				D1D203D824328957009A9E7E /* questions.json in Resources */,
+				DADA38BD243923F30049E30F /* AskView.storyboard in Resources */,
 				D1D203DC24328AF8009A9E7E /* experts.json in Resources */,
 				D1D203F124335E2E009A9E7E /* QuestionTableViewCell.xib in Resources */,
 				DAA5D94024357B39001C001C /* PostAnswerBlockView.xib in Resources */,
@@ -340,6 +350,7 @@
 				D10E77082433A6C900BC2748 /* MyNavigationController.swift in Sources */,
 				D1D203B124326B81009A9E7E /* QuestionsListController.swift in Sources */,
 				D1D203F3243360FF009A9E7E /* QuestionsTableView.swift in Sources */,
+				DADA38BF243927180049E30F /* AskViewController.swift in Sources */,
 				D1D203D024326BD0009A9E7E /* ForumDataProvider.swift in Sources */,
 				DA1B2F1524355D8500A0F4DD /* AnswerBlockView.swift in Sources */,
 				D1D203AD24326B81009A9E7E /* AppDelegate.swift in Sources */,
@@ -347,6 +358,7 @@
 				DA4C131D24380905008759B5 /* AlertErrorHandler.swift in Sources */,
 				D10E77062433A0DF00BC2748 /* QuestionViewController.swift in Sources */,
 				DADB17342435157F006CB1C7 /* QuestionsListViewPresenter.swift in Sources */,
+				DADA38C1243927320049E30F /* AskViewControllerPresenter.swift in Sources */,
 				DA4C131F24380EC3008759B5 /* FilterChooser.swift in Sources */,
 				D1D203D6243272D6009A9E7E /* MockForumDataProvider.swift in Sources */,
 				DAC465252434F927005B1259 /* QuestionViewPresenter.swift in Sources */,

@@ -14,6 +14,7 @@ protocol QuestionsListDelegate: NSObjectProtocol {
     func setDisplayedQuestions(_ questions: [QuestionData], silent: Bool)
     func clearTable()
     func openQuestionView(questionId: Int) //TODO: Create router class to perform navigation and assembly
+    func openAskView() //TODO: Create router class to perform navigation and assembly
     func startLoading()
     func stopLoading()
 }
@@ -69,6 +70,10 @@ class QuestionsListViewPresenter {
 
     public func rowClicked(row: Int) {
         delegate?.openQuestionView(questionId: questionIds[row])
+    }
+    
+    public func askClicked(){
+        delegate?.openAskView()
     }
 
 }

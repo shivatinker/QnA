@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Ask-->
+        <scene sceneID="RTA-p1-ZNT">
+            <objects>
+                <viewController storyboardIdentifier="AskViewController" title="Ask" id="yl6-F4-LPh" customClass="AskViewController" customModule="QnA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WWC-HL-CxG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F5d-Os-VnU">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m9o-oM-lqW" userLabel="Container">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="286"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AhB-JD-eWO">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="286"/>
+                                                <subviews>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="cfJ-cl-e4A" customClass="KMPlaceholderTextView" customModule="QnA" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="43" width="375" height="200"/>
+                                                        <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="ak6-WF-lJA"/>
+                                                        </constraints>
+                                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Write your question here..."/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </textView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FQE-nb-buf">
+                                                        <rect key="frame" x="0.0" y="246" width="375" height="40"/>
+                                                        <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="rnz-yW-AnN"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Post" image="square.and.pencil" catalog="system">
+                                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="onPostButtonClicked:" destination="yl6-F4-LPh" eventType="touchUpInside" id="EDe-Pk-suR"/>
+                                                        </connections>
+                                                    </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZOn-C2-Fko" userLabel="Header">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" text="Ask something as %username%:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OGC-cH-hcZ">
+                                                                <rect key="frame" x="8" y="8.4354050445872417" width="282" height="24"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" name="QuestionHeaderBg"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="JVw-jL-aq9"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="cfJ-cl-e4A" firstAttribute="leading" secondItem="g5F-qB-UoN" secondAttribute="leading" id="A7s-2z-4ss"/>
+                                                    <constraint firstItem="g5F-qB-UoN" firstAttribute="bottom" secondItem="FQE-nb-buf" secondAttribute="bottom" id="JGd-bO-YfQ"/>
+                                                    <constraint firstItem="FQE-nb-buf" firstAttribute="top" secondItem="cfJ-cl-e4A" secondAttribute="bottom" constant="3" id="KzW-5Z-uxA"/>
+                                                    <constraint firstItem="FQE-nb-buf" firstAttribute="trailing" secondItem="g5F-qB-UoN" secondAttribute="trailing" id="Lmd-u9-7PR"/>
+                                                    <constraint firstItem="g5F-qB-UoN" firstAttribute="trailing" secondItem="cfJ-cl-e4A" secondAttribute="trailing" id="PWW-2E-IW9"/>
+                                                    <constraint firstItem="ZOn-C2-Fko" firstAttribute="trailing" secondItem="cfJ-cl-e4A" secondAttribute="trailing" id="X8O-LJ-NI8"/>
+                                                    <constraint firstItem="FQE-nb-buf" firstAttribute="leading" secondItem="g5F-qB-UoN" secondAttribute="leading" id="m5O-2e-42v"/>
+                                                    <constraint firstItem="ZOn-C2-Fko" firstAttribute="top" secondItem="AhB-JD-eWO" secondAttribute="top" id="ogs-th-Oc4"/>
+                                                    <constraint firstItem="cfJ-cl-e4A" firstAttribute="top" secondItem="ZOn-C2-Fko" secondAttribute="bottom" constant="3" id="onO-20-o7M"/>
+                                                    <constraint firstItem="ZOn-C2-Fko" firstAttribute="leading" secondItem="cfJ-cl-e4A" secondAttribute="leading" id="xWV-gb-JMD"/>
+                                                </constraints>
+                                                <viewLayoutGuide key="safeArea" id="g5F-qB-UoN"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="AhB-JD-eWO" firstAttribute="leading" secondItem="m9o-oM-lqW" secondAttribute="leading" id="2OE-dY-6uu"/>
+                                            <constraint firstItem="AhB-JD-eWO" firstAttribute="top" secondItem="m9o-oM-lqW" secondAttribute="top" id="NNS-4Q-wrM"/>
+                                            <constraint firstItem="AhB-JD-eWO" firstAttribute="width" secondItem="m9o-oM-lqW" secondAttribute="width" id="nW9-Jh-VCL"/>
+                                            <constraint firstAttribute="bottom" secondItem="AhB-JD-eWO" secondAttribute="bottom" id="okR-G2-4SU"/>
+                                            <constraint firstAttribute="trailing" secondItem="AhB-JD-eWO" secondAttribute="trailing" id="yUG-tN-w1r"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="m9o-oM-lqW" firstAttribute="bottom" secondItem="nbi-Kx-YZE" secondAttribute="bottom" id="2PC-9J-zXa"/>
+                                    <constraint firstItem="m9o-oM-lqW" firstAttribute="width" secondItem="oHT-XZ-zUh" secondAttribute="width" id="Q3b-um-hpA"/>
+                                    <constraint firstItem="m9o-oM-lqW" firstAttribute="trailing" secondItem="nbi-Kx-YZE" secondAttribute="trailing" id="c18-0o-yHi"/>
+                                    <constraint firstItem="m9o-oM-lqW" firstAttribute="top" secondItem="nbi-Kx-YZE" secondAttribute="top" id="kj6-BN-vdQ"/>
+                                    <constraint firstItem="m9o-oM-lqW" firstAttribute="leading" secondItem="nbi-Kx-YZE" secondAttribute="leading" id="spa-zl-aqz"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="nbi-Kx-YZE"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="oHT-XZ-zUh"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="F5d-Os-VnU" firstAttribute="leading" secondItem="1hL-I9-eDK" secondAttribute="leading" id="512-zf-TMB"/>
+                            <constraint firstItem="F5d-Os-VnU" firstAttribute="top" secondItem="1hL-I9-eDK" secondAttribute="top" id="IJQ-s5-k8b"/>
+                            <constraint firstItem="F5d-Os-VnU" firstAttribute="trailing" secondItem="1hL-I9-eDK" secondAttribute="trailing" id="Wf0-dE-t3D"/>
+                            <constraint firstItem="F5d-Os-VnU" firstAttribute="bottom" secondItem="1hL-I9-eDK" secondAttribute="bottom" id="vTJ-o0-z53"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1hL-I9-eDK"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="headerLabel" destination="OGC-cH-hcZ" id="b2H-g6-CLS"/>
+                        <outlet property="postButton" destination="FQE-nb-buf" id="xZq-vT-9Sb"/>
+                        <outlet property="textView" destination="cfJ-cl-e4A" id="Pc0-dP-TEv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E9V-YP-3bc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="38" y="-28"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="square.and.pencil" catalog="system" width="128" height="118"/>
+        <namedColor name="QuestionHeaderBg">
+            <color red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

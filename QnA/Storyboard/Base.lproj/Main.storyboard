@@ -49,7 +49,11 @@
                                 <action selector="onFilterClicked" destination="BYZ-38-t0r" id="CG1-UG-PfC"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Ask" id="Hht-dh-cys"/>
+                        <barButtonItem key="rightBarButtonItem" title="Ask" id="Hht-dh-cys">
+                            <connections>
+                                <action selector="onAskClicked:" destination="BYZ-38-t0r" id="XYc-Np-g7N"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="askButton" destination="Hht-dh-cys" id="ttX-sR-9s4"/>
