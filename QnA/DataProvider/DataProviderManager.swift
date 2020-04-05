@@ -10,6 +10,8 @@ import Foundation
 
 class DataProviderManager {
 
+    private static let mock = false
+
     private static var defaultDataProvider: ForumDataProvider?
 
     public static func getDefaultDataProvider() -> ForumDataProvider {
@@ -17,16 +19,21 @@ class DataProviderManager {
             return p
         }
 
-        let q = Bundle.main.path(forResource: "questions", ofType: "json")!
-        let e = Bundle.main.path(forResource: "experts", ofType: "json")!
-        do {
-            defaultDataProvider = try MockForumDataProvider(
-                questionsJson: try Data(contentsOf: URL(fileURLWithPath: q)),
-                expertsJson: try Data(contentsOf: URL(fileURLWithPath: e)))
+        if mock {
+            let q = Bundle.main.path(forResource: "questions", ofType: "json")!
+            let e = Bundle.main.path(forResource: "experts", ofType: "json")!
+            do {
+                defaultDataProvider = try MockForumDataProvider(
+                    questionsJson: try Data(contentsOf: URL(fileURLWithPath: q)),
+                    expertsJson: try Data(contentsOf: URL(fileURLWithPath: e)))
+                return defaultDataProvider!
+            } catch let e {
+                print(e)
+                fatalError("Cannot load JSON")
+            }
+        } else {
+            defaultDataProvider = ApiForumDataProvider()
             return defaultDataProvider!
-        } catch let e {
-            print(e)
-            fatalError("Cannot load JSON")
         }
 
     }

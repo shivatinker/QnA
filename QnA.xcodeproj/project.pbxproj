@@ -37,6 +37,7 @@
 		DADA38BD243923F30049E30F /* AskView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DADA38BC243923F30049E30F /* AskView.storyboard */; };
 		DADA38BF243927180049E30F /* AskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA38BE243927180049E30F /* AskViewController.swift */; };
 		DADA38C1243927320049E30F /* AskViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA38C0243927320049E30F /* AskViewControllerPresenter.swift */; };
+		DADA38C324393E560049E30F /* ApiForumDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA38C224393E560049E30F /* ApiForumDataProvider.swift */; };
 		DADB1730243505AA006CB1C7 /* DataProviderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADB172F243505AA006CB1C7 /* DataProviderManager.swift */; };
 		DADB173224350EA6006CB1C7 /* CommonProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADB173124350EA6006CB1C7 /* CommonProtocols.swift */; };
 		DADB17342435157F006CB1C7 /* QuestionsListViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADB17332435157F006CB1C7 /* QuestionsListViewPresenter.swift */; };
@@ -75,6 +76,7 @@
 		DADA38BC243923F30049E30F /* AskView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AskView.storyboard; sourceTree = "<group>"; };
 		DADA38BE243927180049E30F /* AskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskViewController.swift; sourceTree = "<group>"; };
 		DADA38C0243927320049E30F /* AskViewControllerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskViewControllerPresenter.swift; sourceTree = "<group>"; };
+		DADA38C224393E560049E30F /* ApiForumDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiForumDataProvider.swift; sourceTree = "<group>"; };
 		DADB172F243505AA006CB1C7 /* DataProviderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderManager.swift; sourceTree = "<group>"; };
 		DADB173124350EA6006CB1C7 /* CommonProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonProtocols.swift; sourceTree = "<group>"; };
 		DADB17332435157F006CB1C7 /* QuestionsListViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsListViewPresenter.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				D1D203CF24326BD0009A9E7E /* ForumDataProvider.swift */,
 				D1D203D5243272D6009A9E7E /* MockForumDataProvider.swift */,
 				DADB172F243505AA006CB1C7 /* DataProviderManager.swift */,
+				DADA38C224393E560049E30F /* ApiForumDataProvider.swift */,
 			);
 			path = DataProvider;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				DADB1730243505AA006CB1C7 /* DataProviderManager.swift in Sources */,
 				D1D203AF24326B81009A9E7E /* SceneDelegate.swift in Sources */,
 				D1D203F024335E2E009A9E7E /* QuestionTableViewCell.swift in Sources */,
+				DADA38C324393E560049E30F /* ApiForumDataProvider.swift in Sources */,
 				DAA5D94224358348001C001C /* PostAnswerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

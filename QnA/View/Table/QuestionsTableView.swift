@@ -11,6 +11,7 @@ import Foundation
 
 protocol QuestionsTableDelegate: NSObjectProtocol {
     func onRowClicked(row: Int, cell: QuestionsTableViewCellData)
+    func onRowDeleted(row: Int)
 }
 
 struct QuestionsTableViewCellData {
@@ -72,12 +73,26 @@ extension QuestionsTableView: UITableViewDataSource, UITableViewDelegate {
         })
     }
 
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
+            self.performBatchUpdates({
+                self.cellsData.remove(at: indexPath.row)
+                self.deleteRows(at: [indexPath], with: .fade)
+            },completion: {finished in
+                self.superviewDelegate?.onRowDeleted(row: indexPath.row)
+            })
+        }
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let data = cellsData[indexPath.row]
         let cell = dequeueReusableCell(withIdentifier: cell_id) as! QuestionTableViewCell
         cell.answeredView.isHidden = !data.isAnswered
         cell.usernameLabel.text = data.questionAuthorName
         cell.questionTextLabel.text = data.questionText
+
+
 
         return cell
     }

@@ -56,6 +56,10 @@ class QuestionsListViewController: UIViewController {
 }
 
 extension QuestionsListViewController: QuestionsTableDelegate {
+    func onRowDeleted(row: Int) {
+        presenter?.rowDeleteRequested(row: row)
+    }
+    
     func onRowClicked(row: Int, cell: QuestionsTableViewCellData) {
         presenter?.rowClicked(row: row)
     }

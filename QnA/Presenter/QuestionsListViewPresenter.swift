@@ -45,7 +45,7 @@ class QuestionsListViewPresenter {
     public var filterType = FilterType.allQuestions
     public var errorHandler: ErrorHandler?
     public weak var delegate: QuestionsListDelegate?
-    
+
     public func refresh(silent: Bool = false) {
         self.delegate?.startLoading()
         //self.delegate?.clearTable()
@@ -59,7 +59,7 @@ class QuestionsListViewPresenter {
             // Data binding
             self.delegate?.setDisplayedQuestions(questions.map({ (q) -> QuestionData in
                 return QuestionData(questionText: q.question, questionAuthorName: q.asking_Name, isAnswered: q.answer != nil)
-                }), silent: silent)
+            }), silent: silent)
         }
         switch filterType {
         case .allQuestions: dataProvider.getAllQuestions(callback: callback)
@@ -71,9 +71,22 @@ class QuestionsListViewPresenter {
     public func rowClicked(row: Int) {
         delegate?.openQuestionView(questionId: questionIds[row])
     }
-    
-    public func askClicked(){
+
+    public func askClicked() {
         delegate?.openAskView()
     }
 
+    public func rowDeleteRequested(row: Int) {
+        delegate?.startLoading()
+        dataProvider.deleteQuestionById(questionIds[row]) { mbError in
+            defer {
+                self.delegate?.stopLoading()
+                self.refresh()
+            }
+            if let error = mbError {
+                self.errorHandler?.displayError(error)
+                return
+            }
+        }
+    }
 }

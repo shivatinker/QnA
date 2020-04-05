@@ -34,6 +34,7 @@ struct DataProviderError: Error {
     enum ErrorType {
         case noSuchQuestion
         case noSuchExpert
+        case connectionError
         case unknown
     }
 
@@ -47,6 +48,7 @@ extension DataProviderError: LocalizedError {
         case .noSuchExpert: return "No such expert\n" + description
         case .noSuchQuestion: return "No such question\n" + description
         case .unknown: return "We don't know what happened(\n" + description
+        case .connectionError: return "Connection error\n" + description
         }
     }
 }
