@@ -37,8 +37,11 @@ class ApiForumDataProvider: ForumDataProvider {
             callback(nil, DataProviderError(type: .connectionError, description: "Unable to create URL"))
             return
         }
-
-        let dataTask = session.dataTask(with: url) { mbData, mbResponse, error in
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        let dataTask = session.dataTask(with: request) { mbData, mbResponse, error in
             if let error = error {
                 callback(nil, DataProviderError(type: .connectionError, description: error.localizedDescription))
                 return
@@ -79,9 +82,8 @@ class ApiForumDataProvider: ForumDataProvider {
 
         var request = URLRequest(url: url)
         request.httpMethod = method
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpBody = params.queryString.data(using: .utf8)
-
-        print(String(data: request.httpBody!, encoding: .utf8))
 
         session.dataTask(with: request) { (mbData, mbResponse, error) in
             if let error = error {
@@ -157,7 +159,6 @@ class ApiForumDataProvider: ForumDataProvider {
     }
 
     func deleteQuestionById(_ id: Int, callback: @escaping DataPostCallback) {
-        // FIXME: This always returns 400: Bad Request
-        requestToAPI(url: "question", params: ["question": id], method: "DELETE", callback: callback)
+        requestToAPI(url: "question", params: ["id": id], method: "DELETE", callback: callback)
     }
 }
