@@ -81,10 +81,10 @@ class QuestionsListViewPresenter {
         dataProvider.deleteQuestionById(questionIds[row]) { mbError in
             defer {
                 self.delegate?.stopLoading()
-                self.refresh()
             }
             if let error = mbError {
                 self.errorHandler?.displayError(error)
+                self.refresh()
                 return
             }
         }
