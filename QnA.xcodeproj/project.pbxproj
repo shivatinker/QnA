@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B150F59EAA1A7DE02945273 /* Pods_QnA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C856EEE52FF40212387DA4 /* Pods_QnA.framework */; };
 		D10E77062433A0DF00BC2748 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10E77052433A0DF00BC2748 /* QuestionViewController.swift */; };
 		D10E77082433A6C900BC2748 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10E77072433A6C900BC2748 /* MyNavigationController.swift */; };
 		D1D203AD24326B81009A9E7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D203AC24326B81009A9E7E /* AppDelegate.swift */; };
@@ -44,6 +45,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28C856EEE52FF40212387DA4 /* Pods_QnA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QnA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B6B95AC5A618C4D528D41C0 /* Pods-QnA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QnA.release.xcconfig"; path = "Target Support Files/Pods-QnA/Pods-QnA.release.xcconfig"; sourceTree = "<group>"; };
+		BD8B059E9DD35D0522C79BBD /* Pods-QnA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QnA.debug.xcconfig"; path = "Target Support Files/Pods-QnA/Pods-QnA.debug.xcconfig"; sourceTree = "<group>"; };
 		D10E77052433A0DF00BC2748 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		D10E77072433A6C900BC2748 /* MyNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
 		D1D203A924326B81009A9E7E /* QnA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QnA.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,18 +91,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B150F59EAA1A7DE02945273 /* Pods_QnA.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		606D2EBB40FCB1FA260A932D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BD8B059E9DD35D0522C79BBD /* Pods-QnA.debug.xcconfig */,
+				5B6B95AC5A618C4D528D41C0 /* Pods-QnA.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		860A5EF06CA3044CEB5D34C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				28C856EEE52FF40212387DA4 /* Pods_QnA.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D1D203A024326B81009A9E7E = {
 			isa = PBXGroup;
 			children = (
 				D1D203DA243289CA009A9E7E /* Resources */,
 				D1D203AB24326B81009A9E7E /* QnA */,
 				D1D203AA24326B81009A9E7E /* Products */,
+				606D2EBB40FCB1FA260A932D /* Pods */,
+				860A5EF06CA3044CEB5D34C4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -254,10 +279,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D1D203C824326B84009A9E7E /* Build configuration list for PBXNativeTarget "QnA" */;
 			buildPhases = (
+				034E8F503A25F7AD86123E20 /* [CP] Check Pods Manifest.lock */,
 				D1D203A524326B81009A9E7E /* Sources */,
 				D1D203A624326B81009A9E7E /* Frameworks */,
 				D1D203A724326B81009A9E7E /* Resources */,
 				DA1B2F0D2435341A00A0F4DD /* ShellScript */,
+				9E10F1AE6DF35454EBF09A4C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -323,6 +350,45 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		034E8F503A25F7AD86123E20 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QnA-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E10F1AE6DF35454EBF09A4C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QnA/Pods-QnA-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QnA/Pods-QnA-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QnA/Pods-QnA-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DA1B2F0D2435341A00A0F4DD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -511,6 +577,7 @@
 		};
 		D1D203C924326B84009A9E7E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD8B059E9DD35D0522C79BBD /* Pods-QnA.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -531,6 +598,7 @@
 		};
 		D1D203CA24326B84009A9E7E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B6B95AC5A618C4D528D41C0 /* Pods-QnA.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";

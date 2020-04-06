@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "AD8CFD07-7F08-4319-B0C8-00EF0D9D423E"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A2EB0FFB-ED9C-4EE5-8FDF-820E71FB99ED"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QnA/Presenter/QuestionsListViewPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "refresh(silent:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A2EB0FFB-ED9C-4EE5-8FDF-820E71FB99ED - 4419224743db50d6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;QnA.Question&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in QnA.QuestionsListViewPresenter.refresh(silent: Swift.Bool) -&gt; ()"
+                  moduleName = "QnA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shivatinker/Documents/QnA/QnA/Presenter/QuestionsListViewPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "956">
+               </Location>
+               <Location
+                  uuid = "A2EB0FFB-ED9C-4EE5-8FDF-820E71FB99ED - c70e50b1913526fa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "$defer #1 () -&gt; () in closure #1 (Swift.Optional&lt;Swift.Array&lt;QnA.Question&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in QnA.QuestionsListViewPresenter.refresh(silent: Swift.Bool) -&gt; ()"
+                  moduleName = "QnA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shivatinker/Documents/QnA/QnA/Presenter/QuestionsListViewPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0BA17897-03D3-40C8-8F15-C09ACAFAE052"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QnA/Presenter/QuestionsListViewPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "refresh(silent:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 extension Dictionary {
     var queryString: String {
@@ -31,78 +32,48 @@ class ApiForumDataProvider: ForumDataProvider {
         }
     }
 
-    private func getJSONObjectFromAPI<T: Decodable>(url: String, callback: @escaping DataGetCallback<T?>) {
-
-        guard let url = URLComponents(string: apiURL + "/\(url)")?.url else {
-            callback(nil, DataProviderError(type: .connectionError, description: "Unable to create URL"))
-            return
+    private static func checkResponse<T: Decodable>(dataResponse: AFDataResponse<T>) -> DataProviderError? {
+        if let error = dataResponse.error {
+            return DataProviderError(type: .connectionError, description: error.localizedDescription)
         }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        
-        let dataTask = session.dataTask(with: request) { mbData, mbResponse, error in
-            if let error = error {
-                callback(nil, DataProviderError(type: .connectionError, description: error.localizedDescription))
-                return
-            }
+        guard let response = dataResponse.response else {
+            return DataProviderError(type: .connectionError, description: "Response is nil")
+        }
 
-            guard let response = mbResponse as? HTTPURLResponse else {
-                callback(nil, DataProviderError(type: .connectionError, description: "Response is broken"))
-                return
-            }
+        if !(200..<300 ~= response.statusCode) {
+            return DataProviderError(type: .connectionError, description: "HTTP \(response.statusCode) got")
+        }
+        return nil
+    }
 
-            if response.statusCode != 200 {
-                callback(nil, DataProviderError(type: .connectionError, description: "HTTP Code: \(response.statusCode)"))
-                return
-            }
-
-            guard let data = mbData else {
-                callback(nil, DataProviderError(type: .connectionError, description: "nil got from API"))
-                return
+    private func getJSONObjectFromAPI<T: Decodable>(url: String, callback: @escaping DataGetCallback<T?>) {
+        AF.request(apiURL + "/\(url)").responseDecodable(
+            of: T.self,
+            queue: DispatchQueue.global(qos: .userInitiated))
+        { dataResponse in
+            if let error = ApiForumDataProvider.checkResponse(dataResponse: dataResponse) {
+                callback(nil, error)
             }
 
             do {
-                let decoded = try JSONDecoder.init().decode(T.self, from: data)
-                callback(decoded, nil)
+                try callback(dataResponse.result.get(), nil)
             } catch let e {
-                callback(nil, DataProviderError(type: .connectionError, description: "JSON Parsing error: \(e.localizedDescription)"))
-                return
+                callback(nil, DataProviderError(type: .connectionError, description: e.localizedDescription))
             }
         }
-
-        dataTask.resume()
     }
 
-    private func requestToAPI(url: String, params: [String: Any], method: String = "POST", callback: @escaping DataPostCallback) {
-        guard let url = URLComponents(string: apiURL + "/\(url)")?.url else {
-            callback(DataProviderError(type: .connectionError, description: "Unable to create URL"))
-            return
+    private static let commonHeaders: HTTPHeaders = ["Content-Type": "application/x-www-form-urlencoded"]
+    private func requestToAPI(url: String, params: [String: Any], method: HTTPMethod = .post, callback: @escaping DataPostCallback) {
+        AF.request(
+            apiURL + "/\(url)",
+            method: method,
+            parameters: params,
+            encoding: URLEncoding.httpBody,
+            headers: ApiForumDataProvider.commonHeaders
+        ).response { (dataResponse) in
+            callback(ApiForumDataProvider.checkResponse(dataResponse: dataResponse))
         }
-
-        var request = URLRequest(url: url)
-        request.httpMethod = method
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.httpBody = params.queryString.data(using: .utf8)
-
-        session.dataTask(with: request) { (mbData, mbResponse, error) in
-            if let error = error {
-                callback(DataProviderError(type: .connectionError, description: error.localizedDescription))
-                return
-            }
-
-            guard let response = mbResponse as? HTTPURLResponse else {
-                callback(DataProviderError(type: .connectionError, description: "Response is broken"))
-                return
-            }
-
-            if response.statusCode != 200 {
-                callback(DataProviderError(type: .connectionError, description: "HTTP Code: \(response.statusCode)"))
-                return
-            }
-
-            callback(nil)
-        }.resume()
     }
 
     func getUsername() -> String {
@@ -159,6 +130,6 @@ class ApiForumDataProvider: ForumDataProvider {
     }
 
     func deleteQuestionById(_ id: Int, callback: @escaping DataPostCallback) {
-        requestToAPI(url: "question", params: ["id": id], method: "DELETE", callback: callback)
+        requestToAPI(url: "question", params: ["id": id], method: .delete, callback: callback)
     }
 }

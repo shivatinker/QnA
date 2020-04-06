@@ -51,7 +51,7 @@ class QuestionsListViewPresenter {
         //self.delegate?.clearTable()
         let callback = { (mbQuestions: [Question]?, mbError: Error?) in
             defer { self.delegate?.stopLoading() }
-            guard let questions = mbQuestions else {
+            guard let questions = mbQuestions, mbError == nil else {
                 self.errorHandler?.displayError(mbError)
                 return
             }
